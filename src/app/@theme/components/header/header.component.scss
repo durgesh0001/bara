@@ -1,0 +1,146 @@
+@import '../../styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+
+@include nb-install-component() {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .left {
+    display: flex;
+    width: 100%;
+    order: 0;
+    flex-direction: row;
+  }
+  .right {
+    order: 1;
+    flex-direction: row-reverse;
+  }
+
+  .logo-containter {
+    display: flex;
+    align-items: center;
+  }
+
+  .control-item {
+    display: block;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .navigation {
+      padding-right: nb-theme(padding);
+      font-size: 2.5rem;
+      text-decoration: none;
+
+      i {
+        display: block;
+      }
+
+    }
+
+    .logo {
+      padding: 0 nb-theme(padding);
+      font-size: 1.75rem;
+      font-weight: nb-theme(font-weight-bolder);
+      border-left: 1px solid nb-theme(separator);
+      white-space: nowrap;
+
+      span {
+        font-weight: nb-theme(font-weight-normal);
+      }
+    }
+  }
+
+
+  .title_nav{
+    justify-content: flex-end;
+  }
+
+  .title_nav .navbar-nav.navbar-right-header{
+    display: table-row;
+    float: left;
+    width: max-content;
+  }
+
+  .title_nav .navbar-nav.navbar-right-header li{
+    display: table-cell;
+    padding-right: 10px;
+    background: none;
+  }
+
+  .title_nav .navbar-nav.navbar-right-header li a{
+    background: none;
+    text-decoration:none;
+    border: 0px solid #3a9aca;
+    border-radius: 5px;
+    padding: 3px 5px;
+    display: block;
+    color: #000;
+  }
+
+  .title_nav .navbar-nav.navbar-right-header li a:hover{
+    text-decoration: none;
+    color: #fff;
+    background:#3a9aca;
+  }
+  .toggle-layout /deep/ a {
+    display: block;
+    text-decoration: none;
+    line-height: 1;
+
+    i {
+      color: nb-theme(color-fg-highlight);
+      font-size: 2.25rem;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+
+    nb-action:not(.toggle-layout) {
+      border: none;
+    }
+
+    .control-item {
+      display: none;
+    }
+
+    .toggle-layout {
+      padding: 0;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+
+    nb-user /deep/ .user-name {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+
+    .header-container {
+      .logo {
+        font-size: 1.25rem;
+      }
+    }
+
+    .toggle-layout {
+      display: none;
+    }
+
+    nb-action:not(.toggle-layout) {
+      padding: 0;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    .right /deep/ {
+      display: none;
+    }
+  }
+}

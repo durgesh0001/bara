@@ -1,0 +1,49 @@
+<nb-card>
+  <nb-card-header>Create Unit</nb-card-header>  
+  <nb-card-body>
+    <form [formGroup]="CreateUnitForm" (ngSubmit)="createUnit()" id="create-operator-form" role="form">
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Name</label>
+              <input type="text" name="Name" id="Name" tabindex="1" class="form-control" placeholder="Name" formControlName="Name" [(ngModel)]="unitData.Name">
+              <!-- <p *ngIf="!UpdateForm.controls.UserID.valid  && UpdateForm.controls.UserID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+            <label>Short name</label>
+            <input type="text" name="ShortName" id="ShortName" tabindex="2" class="form-control" placeholder="Short name" formControlName="ShortName" [(ngModel)] ="unitData.ShortName">
+                <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+        </div>          
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Tags</label>
+          <input type="text" name="Tags" id="Tags" tabindex="3" class="form-control" placeholder="Tags" formControlName="Tags" [(ngModel)] ="unitData.Tags">
+              <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+      </div>
+        <div class="col-sm-6">
+          <label>Status</label>
+              <input type="text" name="Status" id="Status" tabindex="4" class="form-control" placeholder="Active or InActive" formControlName="Status" [(ngModel)]="unitData.Status">
+              <!-- <p *ngIf="!UpdateForm.controls.Type.valid  && UpdateForm.controls.Type.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>                    
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+            <label>Notes</label>
+            <input type="text" name="Notes" id="Notes" tabindex="5" class="form-control" placeholder="Notes" formControlName="Notes" [(ngModel)] ="unitData.Notes">
+            <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->  
+        </div>
+        <div class="col-sm-6">
+            
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+            <button type="submit " name="create-unit-submit " id="create-unit-submit" tabindex="6" class="btn btn-primary" [disabled]="!CreateUnitForm.valid">Create Unit</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

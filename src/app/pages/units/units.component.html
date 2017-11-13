@@ -1,0 +1,58 @@
+<nb-card>
+  <nb-card-header>Units</nb-card-header>  
+  <nb-card-body>
+      <table class="table table-striped" [mfData]="userDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
+          <thead>
+            <tr>
+              <th style="width: 25%">
+                <mfDefaultSorter by="Name">Name</mfDefaultSorter>
+              </th>
+              <th style="width: 25%">
+                <mfDefaultSorter by="ShortName">Short Name</mfDefaultSorter>
+              </th>
+              <th style="width: 25%">
+                <mfDefaultSorter by="Status">Status</mfDefaultSorter>
+              </th>
+              <th style="width: 25%">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mf.data; let i=index;">
+                <td>{{item.Name}}</td>
+                <td>{{item.ShortName}}</td>
+                <td>{{item.Status}}</td>          
+                <td><a href="#">Edit</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <!-- <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table> -->
+
+
+  <!-- <table class="table table-hover dataTable no-footer">
+    <thead>
+        <tr role="row">
+          <th>Name</th>
+          <th>Short name</th>
+          <th>Status</th>
+          <th>&nbsp;</th>
+    </thead>
+    <tbody>            
+    <tr *ngFor="let userData of userDetails">
+      <td>{{userData.Name}}</td>
+      <td>{{userData.ShortName}}</td>
+      <td>{{userData.Status}}</td>          
+      <td><a href="#">Edit</a></td>       
+    </tr>
+  </tbody>
+</table> -->
+    </nb-card-body>
+</nb-card>

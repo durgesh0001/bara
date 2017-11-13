@@ -1,0 +1,56 @@
+<nb-card>
+  <nb-card-header>Suppplies</nb-card-header>  
+  <nb-card-body>
+      <div class="table-responsive">
+      <table class="table table-striped" [mfData]="suppliesDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
+          <thead>
+            <tr>
+              <th style="width: 11%">
+                <mfDefaultSorter by="Customer">Customer</mfDefaultSorter>
+              </th>
+              <th style="width: 11%">
+                <mfDefaultSorter by="Type">Type</mfDefaultSorter>
+              </th>
+              <th style="width: 11%">
+                <mfDefaultSorter by="Supplier">Supplier</mfDefaultSorter>
+              </th>
+              <th style="width: 11%">
+                <mfDefaultSorter by="Name">Name</mfDefaultSorter>
+              </th>
+              <th style="width: 11%">
+                <mfDefaultSorter by="Unit">Unit</mfDefaultSorter>
+              </th>
+              <th style="width: 11%">
+                <mfDefaultSorter by="PurchasePriceAmount">Purchase<br> Price<br> Amount</mfDefaultSorter>
+              </th>
+              <th style="width: 11%">
+                <mfDefaultSorter by="SalesPriceAmount">Sales<br> Price<br> Amount</mfDefaultSorter>
+              </th>                
+              <th style="width: 11%">Status</th>
+              <th style="width: 11%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mf.data; let i=index;">
+                <td>{{item.Customer.Name}}</td>   
+                <td>{{item.Type}}</td>
+                <td>{{item.Supplier.Name}}</td>                
+                <td>{{item.Name}}</td>
+                <td>{{item.Unit}}</td>                  
+                <td>{{item.DefaultPurchasePriceAmount}}</td>
+                <td>{{item.DefaultSalesPriceAmount}}</td>                  
+                <td>{{item.Status}}</td>                
+                <td><a href="#">Edit</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="9">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        </div>
+    </nb-card-body>
+</nb-card>

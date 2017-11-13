@@ -1,0 +1,175 @@
+<nb-card>
+  <nb-card-header>Create Invoice</nb-card-header>  
+  <nb-card-body>
+    <form [formGroup]="CreateInvoiceForm" (ngSubmit)="createInvoice()" id="create-invoice-form" role="form">
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Customer ID</label>
+              <input type="text" name="CustomerID" id="CustomerID" tabindex="1" class="form-control" placeholder="Customer ID" formControlName="CustomerID" [(ngModel)]="invoiceData.CustomerID">
+              <!-- <p *ngIf="!UpdateForm.controls.UserID.valid  && UpdateForm.controls.UserID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+            <label>Client ID</label>
+            <input type="text" name="ClientID" id="ClientID" tabindex="2" class="form-control" placeholder="Client ID" formControlName="ClientID" [(ngModel)] ="invoiceData.ClientID">
+                <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+        </div>          
+      </div>
+
+      <!-- 
+      SubscriptionID
+       -->
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Supplier ID</label>
+          <input type="text" name="SupplierID" id="SupplierID" tabindex="3" class="form-control" placeholder="Supplier ID" formControlName="SupplierID" [(ngModel)] ="invoiceData.SupplierID">
+              <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+      </div>
+        <div class="col-sm-6">
+          <label>Project ID</label>
+              <input type="text" name="ProjectID" id="ProjectID" tabindex="4" class="form-control" placeholder="Project ID" formControlName="ProjectID" [(ngModel)]="invoiceData.ProjectID">
+              <!-- <p *ngIf="!UpdateForm.controls.Type.valid  && UpdateForm.controls.Type.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>                    
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Order ID</label>
+          <input type="text" placeholder="Order ID" class="form-control" name="OrderID" id="Tags" tabindex="5" formControlName="OrderID" [(ngModel)]="invoiceData.OrderID" />
+        </div>
+        <div class="col-sm-6">
+            <label>Number</label>
+            <input type="text" name="Number" id="Number" tabindex="6" class="form-control" placeholder="Number" formControlName="Number" [(ngModel)]="invoiceData.Number">
+          <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+          <div class="col-sm-6">
+              <label>Due Date</label>
+              <input type="text" name="DueDate" id="DueDate" tabindex="7" class="form-control" placeholder="Due Date" formControlName="DueDate" [(ngModel)]="invoiceData.DueDate">
+            <!-- <p *ngIf="!UpdateForm.controls.FamilyName.valid  && UpdateForm.controls.FamilyName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>
+          <div class="col-sm-6">
+              <label>Type</label>
+              <input type="text" placeholder="Type" class="form-control" name="Type" id="Type" tabindex="8" formControlName="Type" [(ngModel)]="invoiceData.Type" />
+              <!-- <p *ngIf="!UpdateForm.controls.FullName.valid  && UpdateForm.controls.FullName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Status</label>
+              <input type="text" placeholder="Status" class="form-control" name="Status" id="Status" tabindex="9" formControlName="Status" [(ngModel)]="invoiceData.Status" />
+            </div>
+            <div class="col-sm-6">
+              <label>Reference</label>
+              <input type="text" placeholder="Reference" class="form-control" name="Reference" id="Reference" tabindex="10" formControlName="Reference" [(ngModel)]="invoiceData.Reference" />
+            </div>            
+          </div>
+
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Description 1</label>
+              <input type="text" placeholder="Description 1" class="form-control" name="Description1" id="Description1" tabindex="11" formControlName="Description1" [(ngModel)]="invoiceData.Description1" />
+            </div>            
+            <div class="col-sm-6">
+              <label>Description 2</label>
+              <input type="text" placeholder="Description 2" class="form-control" name="Description2" id="Description2" tabindex="12" formControlName="Description2" [(ngModel)]="invoiceData.Description2" />
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Date</label>
+              <input type="text" placeholder="Date" class="form-control" name="Date" id="Date" tabindex="13" formControlName="Date" [(ngModel)]="invoiceData.Date" />
+            </div>
+            <div class="col-sm-6">
+              <label>Notes</label>
+              <input type="text" placeholder="Notes" class="form-control" name="Notes" id="Notes" tabindex="14" formControlName="Notes" [(ngModel)]="invoiceData.Notes" />
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Payment Date</label>
+              <input type="text" placeholder="Payment Date" class="form-control" name="PaymentDate" id="PaymentDate" tabindex="15" formControlName="PaymentDate" [(ngModel)]="invoiceData.PaymentDate" />
+            </div>
+            <div class="col-sm-6">
+              <label>Is Disputed</label>
+              <input type="text" placeholder="Is Disputed" class="form-control" name="IsDisputed" id="IsDisputed" tabindex="16" formControlName="IsDisputed" [(ngModel)]="invoiceData.IsDisputed" />
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-sm-6">
+                <label>Invoice Line Supply ID</label>
+                <input type="text" name="InvoiceLineSupplyID" id="InvoiceLineSupplyID" tabindex="17" class="form-control" placeholder="Invoice Line Supply ID" formControlName="InvoiceLineSupplyID" [(ngModel)]="invoiceData.InvoiceLineSupplyID">
+              <!-- <p *ngIf="!UpdateForm.controls.FamilyName.valid  && UpdateForm.controls.FamilyName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+            </div>
+            <div class="col-sm-6">
+                <label>Subscription ID</label>
+                <input type="text" placeholder="Subscription ID" class="form-control" name="SubscriptionID" id="SubscriptionID" tabindex="18" formControlName="SubscriptionID" [(ngModel)]="invoiceData.SubscriptionID" />
+                <!-- <p *ngIf="!UpdateForm.controls.FullName.valid  && UpdateForm.controls.FullName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+            </div>
+          </div>
+  
+          <div class="row form-group">
+              <div class="col-sm-6">
+                <label>Invoice Line Project ID</label>
+                <input type="text" placeholder="Invoice Line ProjectID" class="form-control" name="InvoiceLineProjectID" id="InvoiceLineProjectID" tabindex="19" formControlName="InvoiceLineProjectID" [(ngModel)]="invoiceData.InvoiceLineProjectID" />
+              </div>
+              <div class="col-sm-6">
+                <label>Invoice Line Description</label>
+                <input type="text" placeholder="Invoice Line Description" class="form-control" name="InvoiceLineDescription" id="InvoiceLineDescription" tabindex="20" formControlName="InvoiceLineDescription" [(ngModel)]="invoiceData.InvoiceLineDescription" />
+              </div>
+            </div>
+  
+            <div class="row form-group">
+              <div class="col-sm-6">
+                <label>Invoice Line Quantity</label>
+                <input type="text" placeholder="Invoice Line Quantity" class="form-control" name="InvoiceLineQuantity" id="InvoiceLineQuantity" tabindex="21" formControlName="InvoiceLineQuantity" [(ngModel)]="invoiceData.InvoiceLineQuantity" />
+              </div>
+              <div class="col-sm-6">
+                <label>Invoice Line Amount</label>
+                <input type="text" placeholder="Invoice Line Amount" class="form-control" name="InvoiceLineAmount" id="InvoiceLineAmount" tabindex="22" formControlName="InvoiceLineAmount" [(ngModel)]="invoiceData.InvoiceLineAmount" />
+              </div>
+            </div>
+  
+            <div class="row form-group">
+              <div class="col-sm-6">
+                <label>Invoice Line Allowance Percent</label>
+                <input type="text" placeholder="Invoice Line Allowance Percent" class="form-control" name="InvoiceLineAllowancePercent" id="InvoiceLineAllowancePercent" tabindex="23" formControlName="InvoiceLineAllowancePercent" [(ngModel)]="invoiceData.InvoiceLineAllowancePercent" />
+              </div>
+              <div class="col-sm-6">
+                <label>Invoice Line Allowance Fixed</label>
+                <input type="text" placeholder="Invoice Line Allowance Fixed" class="form-control" name="InvoiceLineAllowanceFixed" id="InvoiceLineAllowanceFixed" tabindex="23" formControlName="InvoiceLineAllowanceFixed" [(ngModel)]="invoiceData.InvoiceLineAllowanceFixed" />
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-sm-6">
+                <label>Invoice Line Vat Code ID</label>
+                <input type="text" placeholder="Invoice Line Vat Code ID" class="form-control" name="InvoiceLineVatCodeID" id="InvoiceLineVatCodeID" tabindex="23" formControlName="InvoiceLineVatCodeID" [(ngModel)]="invoiceData.InvoiceLineVatCodeID" />
+              </div>
+              <div class="col-sm-6">
+                <label>Subscription Period Start Date</label>
+                <input type="text" placeholder="Subscription Period Start Date" class="form-control" name="SubscriptionPeriodStartDate" id="SubscriptionPeriodStartDate" tabindex="23" formControlName="SubscriptionPeriodStartDate" [(ngModel)]="invoiceData.SubscriptionPeriodStartDate" />
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-sm-6">
+                <label>Subscription Period End Date</label>
+                <input type="text" placeholder="Subscription Period End Date" class="form-control" name="SubscriptionPeriodEndDate" id="SubscriptionPeriodEndDate" tabindex="23" formControlName="SubscriptionPeriodEndDate" [(ngModel)]="invoiceData.SubscriptionPeriodEndDate" />
+              </div>
+            </div>
+  
+      <div class="form-group row">
+        <div class="col-sm-12">
+            <button type="submit " name="create-submit " id="create-submit" tabindex="27" class="btn btn-primary" [disabled]="!CreateInvoiceForm.valid">Create Invoice</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

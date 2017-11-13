@@ -1,0 +1,60 @@
+<nb-card>
+  <nb-card-header>Vat Codes</nb-card-header>  
+  <nb-card-body>
+   <!-- <table datatable id="vatTable">
+      <thead>
+          <tr role="row">
+            <th>Name</th>
+            <th>Short name</th>
+            <th>Status</th>
+            <th>&nbsp;</th>
+      </thead>
+      <tbody>            
+      <tr *ngFor="let vatData of vatDetails">
+        <td>{{vatData.Name}}</td>
+        <td>{{vatData.ShortName}}</td>
+        <td>{{vatData.Type}}</td>          
+        <td>{{vatData.Notes}}</td>      
+      </tr>
+    </tbody>
+  </table> -->
+
+<table class="table table-striped" [mfData]="vatDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
+    <thead>
+      <tr>
+        <th style="width: 40%">
+          <mfDefaultSorter by="Name">Name</mfDefaultSorter>
+        </th>
+        <th style="width: 20%">
+          <mfDefaultSorter by="ShortName">Short Name</mfDefaultSorter>
+        </th>
+        <th style="width: 15%">
+            <mfDefaultSorter by="Type">Type</mfDefaultSorter>
+          </th>              
+        <th style="width: 15%">
+          <mfDefaultSorter by="Notes">Notes</mfDefaultSorter>
+        </th>
+        <th style="width: 10%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mf.data; let i=index;">
+          <td>{{item.Name}}</td>
+          <td>{{item.ShortName}}</td>
+          <td>{{item.Type}}</td>
+          <td>{{item.Notes}}</td>      
+          <td><a href="#">Edit</a></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+
+    </nb-card-body>
+</nb-card>

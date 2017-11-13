@@ -1,0 +1,113 @@
+<nb-card>
+  <nb-card-header>Create Categories</nb-card-header>
+  <nb-card-body>
+    <!-- Status: '', ParentID:'', Notes: '', ShortName: '', CategoryStatus: '', VatCodeID: '',  CustomerID: '', SupplierID: '', DiscountValue: '', DiscountValueType: '', DiscountValidFrom: '', MarginValue: '', MarginValueType: '', MarginValidFrom: '' -->
+    <form [formGroup]="CreateCategoriesForm" (ngSubmit)="createCategories()" id="create-categories-form" role="form">
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Parent ID</label>
+          <input type="text" name="ParentID" id="ParentID" tabindex="1" class="form-control" placeholder="0eaed3fb-5048-48d7-a3c5-9d5a2729c924" formControlName="ParentID" [(ngModel)]="categoriesData.ParentID">
+          <!-- <p *ngIf="!UpdateForm.controls.UserID.valid  && UpdateForm.controls.UserID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Name</label>
+          <input type="text" name="Name" id="Name" tabindex="2" class="form-control" placeholder="Name" formControlName="Name" [(ngModel)]="categoriesData.Name">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>ShortName</label>
+          <input type="text" name="ShortName" id="ShortName" tabindex="3" class="form-control" placeholder="ShortName" formControlName="ShortName" [(ngModel)]="categoriesData.ShortName">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Customer ID</label>
+          <input type="text" name="CustomerID" id="CustomerID" tabindex="4" class="form-control" placeholder="Customer ID" formControlName="CustomerID" [(ngModel)]="categoriesData.CustomerID">
+          <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>  
+      
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Supplier ID</label>
+          <input type="text" name="SupplierID" id="SupplierID" tabindex="5" class="form-control" placeholder="SupplierID" formControlName="SupplierID" [(ngModel)]="categoriesData.SupplierID">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Status</label>
+          <input type="text" name="Status" id="Status" tabindex="6" class="form-control" placeholder="Status" formControlName="Status" [(ngModel)]="categoriesData.Status">
+          <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div> 
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Category Status</label>
+          <input type="text" name="CategoryStatus" id="CategoryStatus" tabindex="7" class="form-control" placeholder="CategoryStatus" formControlName="CategoryStatus" [(ngModel)]="categoriesData.CategoryStatus">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Vat Code ID</label>
+          <input type="text" name="VatCodeID" id="VatCodeID" tabindex="8" class="form-control" placeholder="Vat Code ID" formControlName="VatCodeID" [(ngModel)]="categoriesData.VatCodeID">
+          <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>
+      
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Margin Value</label>
+          <input type="text" name="MarginValue" id="MarginValue" tabindex="11" class="form-control" placeholder="MarginValue" formControlName="MarginValue" [(ngModel)]="categoriesData.MarginValue">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Discount Value</label>
+          <input type="text" name="DiscountValue" id="DiscountValue" tabindex="9" class="form-control" placeholder="DiscountValue" formControlName="DiscountValue" [(ngModel)]="categoriesData.DiscountValue">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>        
+      </div>
+
+      <div class="row form-group">        
+        <div class="col-sm-6">
+          <label>Margin Value Type</label>
+          <input type="text" name="MarginValueType" id="MarginValueType" tabindex="12" class="form-control" placeholder="MarginValueType" formControlName="MarginValueType" [(ngModel)]="categoriesData.MarginValueType">
+          <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Discount Value Type</label>
+          <input type="text" name="DiscountValueType" id="DiscountValueType" tabindex="10" class="form-control" placeholder="DiscountValueType" formControlName="DiscountValueType" [(ngModel)]="categoriesData.DiscountValueType">
+          <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Margin Valid From</label>
+          <input type="text" name="MarginValidFrom" id="MarginValidFrom" tabindex="13" class="form-control" placeholder="MarginValidFrom" formControlName="MarginValidFrom" [(ngModel)]="categoriesData.MarginValidFrom">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Discount Valid From</label>
+          <input type="text" name="DiscountValidFrom" id="DiscountValidFrom" tabindex="13" class="form-control" placeholder="DiscountValidFrom" formControlName="DiscountValidFrom" [(ngModel)]="categoriesData.DiscountValidFrom">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Notes</label>
+          <input type="text" name="Notes" id="Notes" tabindex="14" class="form-control" placeholder="Notes" formControlName="Notes" [(ngModel)]="categoriesData.Notes">
+          <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit" name="create-submit" id="create-submit" tabindex="15" class="btn btn-primary" [disabled]="!CreateCategoriesForm.valid">Create Categories</button>
+        </div>
+      </div>
+    </form>
+
+  </nb-card-body>
+</nb-card>

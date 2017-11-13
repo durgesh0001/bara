@@ -1,0 +1,82 @@
+<nb-card>
+  <nb-card-header>Create Project</nb-card-header>
+  <nb-card-body>
+
+    <form [formGroup]="CreateProjectForm" (ngSubmit)="createProject()" id="create-customer-form" role="form">
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Name</label>
+          <input type="text" name="Name" id="Name" tabindex="1" class="form-control" placeholder="Name" formControlName="Name" [(ngModel)]="projectData.Name"
+          />
+        </div>
+        <div class="col-sm-6">
+          <label>Parent ID</label>
+          <input type="text" name="ParentID" id="ParentID" tabindex="2" class="form-control" placeholder="044a7bb5-4216-4da4-89e2-9631da6f8123" formControlName="ParentID" [(ngModel)]="projectData.ParentID">
+        </div>
+      </div>
+
+      <!-- <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Customer</label>
+          <input type="text" name="Customer" id="Customer" tabindex="10" class="form-control" placeholder="Customer" formControlName="Customer"
+            [(ngModel)]="projectData.Customer" />
+        </div>
+
+        <div class="col-sm-6">
+          <label>Client</label>
+          <input type="text" name="Client" id="Client" tabindex="11" class="form-control" placeholder="Client" formControlName="Client"
+            [(ngModel)]="projectData.Client" />
+        </div>
+      </div> -->
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Short Name</label>
+          <input type="text" name="ShortName" id="ShortName" tabindex="3" class="form-control" placeholder="Short Name" formControlName="ShortName"
+            [(ngModel)]="projectData.ShortName" />
+        </div>
+        <div class="col-sm-6">
+          <label>Customer ID</label>
+          <input type="text" name="CustomerID" id="CustomerID" tabindex="4" class="form-control" placeholder="5ade64d9-c7f8-4f86-b651-126696ead86d" formControlName="CustomerID" [(ngModel)]="projectData.CustomerID" />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Client ID</label>
+          <input type="text" placeholder="ae480303-f7fe-4782-9822-e897bbf72190" class="form-control" name="ClientID" id="ClientID" tabindex="5" formControlName="ClientID" [(ngModel)]="projectData.ClientID" />
+        </div>
+        <div class="col-sm-6">
+          <label>Description</label>
+          <input type="text" name="Description" id="Description" tabindex="6" class="form-control" placeholder="Description" formControlName="Description" [(ngModel)]="projectData.Description" />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Start Date</label>
+          <input type="text" placeholder="2017-10-12T13:22:50.3573518+02:00" class="form-control" name="StartDate" id="StartDate" tabindex="7" formControlName="StartDate" [(ngModel)]="projectData.StartDate" />
+        </div>
+        <div class="col-sm-6">
+          <label>End Date</label>
+          <input type="text" name="End Date" id="EndDate" tabindex="8" class="form-control" placeholder="2017-10-12T13:22:50.3573518+02:00" formControlName="EndDate" [(ngModel)]="projectData.EndDate" />
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Status</label>
+          <input type="text" name="Status" id="Status" tabindex="9" class="form-control" placeholder="Status" formControlName="Status"
+            [(ngModel)]="projectData.Status" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit " name="create-submit " id="create-submit" tabindex="10 " class="btn btn-primary" [disabled]="!CreateProjectForm.valid">Create customer</button>
+        </div>
+      </div>
+    </form>
+
+  </nb-card-body>
+</nb-card>

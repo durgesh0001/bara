@@ -1,0 +1,50 @@
+<nb-card>
+  <nb-card-header>Orders</nb-card-header>  
+  <nb-card-body>
+      <div class="table-responsive">
+      <table class="table table-striped" [mfData]="orderDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
+          <thead>
+            <tr>
+              <th style="width: 19%">
+                <mfDefaultSorter by="OrderID">Order ID</mfDefaultSorter>
+              </th>
+              <th style="width: 10%">
+                <mfDefaultSorter by="Type">Type</mfDefaultSorter>
+              </th>
+              <th style="width: 18%">
+                <mfDefaultSorter by="Owner">Owner</mfDefaultSorter>
+              </th>
+              <th style="width: 22%">
+                <mfDefaultSorter by="Date">Date</mfDefaultSorter>
+              </th>
+              <th style="width: 14%">
+                <mfDefaultSorter by="TotalExcludingVatAmount">Total Excluding Vat Amount</mfDefaultSorter>
+              </th>
+              <th style="width: 10%">
+                <mfDefaultSorter by="Status">Status</mfDefaultSorter>
+              </th>              
+              <th style="width: 5%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mf.data; let i=index;">
+                <td>{{item.OrderID}}</td>   
+                <td>{{item.Type}}</td>
+                <td>{{item.Owner}}</td>                
+                <td>{{item.Date}}</td>
+                <td>{{item.TotalExcludingVatAmount}}</td>   
+                <td>{{item.Status}}</td>             
+                <td><a href="#">Edit</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="7">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        </div>
+    </nb-card-body>
+</nb-card>

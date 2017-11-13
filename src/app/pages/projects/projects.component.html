@@ -1,0 +1,65 @@
+<nb-card>
+    <nb-card-header>Projects</nb-card-header>
+    <nb-card-body>  
+      <!-- <table class="table table-hover dataTable no-footer">
+        <thead>
+          <tr role="row">
+            <th>Name</th>
+            <th>Client</th>
+            <th>Start Date</th>
+            <th>EndDate</th>
+            <th>Status</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let projectstData of projectDetails">
+            <td>{{projectstData.Name}}</td>
+            <td>{{projectstData.ParentID}}</td>
+            <td>{{projectstData.CocNumber}}</td>
+            <td>{{projectstData.EndDate}}</td>
+            <td>{{projectstData.Status}}</td>
+          </tr>
+        </tbody>
+      </table> -->
+
+      <table class="table table-striped" [mfData]="projectDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
+          <thead>
+            <tr>
+              <th style="width: 27.12%">
+                <mfDefaultSorter by="Name">Name</mfDefaultSorter>
+              </th>
+              <th style="width: 12.66%">
+                <mfDefaultSorter by="ParentID">ParentID</mfDefaultSorter>
+              </th>
+              <th style="width: 16.66%">
+                  <mfDefaultSorter by="CocNumber">Coc Number</mfDefaultSorter>
+                </th>
+              <th style="width: 16.66%">
+                <mfDefaultSorter by="EndDate">EndDate</mfDefaultSorter>
+              </th>              
+              <th style="width: 16.66%">
+                <mfDefaultSorter by="Status">Status</mfDefaultSorter>
+              </th>
+              <th style="width: 10%">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of mf.data; let i=index;">
+                <td>{{item.Name}}</td>
+                <td>{{item.ParentID}}</td>                  
+                <td>{{item.CocNumber}}</td>
+                <td>{{item.EndDate}}</td>  
+                <td>{{item.Status}}</td>      
+                <td><a href="#">Edit</a></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+    </nb-card-body>
+  </nb-card>

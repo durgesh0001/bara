@@ -1,0 +1,236 @@
+<!-- <div class="row">
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="Light" type="primary">
+      <i class="nb-lightbulb"></i>
+    </ngx-status-card>
+  </div>
+
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="Roller Shades" type="success">
+      <i class="nb-roller-shades"></i>
+    </ngx-status-card>
+  </div>
+
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="Wireless Audio" type="info">
+      <i class="nb-audio"></i>
+    </ngx-status-card>
+  </div>
+
+  <div class="col-xxxl-3 col-md-6">
+    <ngx-status-card title="Coffee Maker" type="warning">
+      <i class="nb-coffee-maker"></i>
+    </ngx-status-card>
+  </div>
+</div> -->
+
+<!-- <div class="row">
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-temperature></ngx-temperature>
+  </div>
+
+  <div class="col-xxxl-9 col-xxl-8 col-lg-7 col-md-6">
+    <ngx-electricity></ngx-electricity>
+  </div>
+</div> -->
+
+<!-- <div class="row">
+  <div class="col-xxxl-9 col-xl-12">
+    <ngx-rooms></ngx-rooms>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-7 col-md-6">
+    <ngx-contacts></ngx-contacts>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-solar [chartValue]="72"></ngx-solar>
+
+    <ngx-kitten></ngx-kitten>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-md-5">
+    <ngx-traffic></ngx-traffic>
+    <ngx-weather></ngx-weather>
+  </div>
+
+  <div class="col-xxxl-6 col-xxl-12 col-md-7">
+    <ngx-security-cameras></ngx-security-cameras>
+  </div>
+</div> -->
+
+<div class="row title_bar">
+  <div class="col-xxxl-6 col-xxl-12 col-md-6">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="col-xxxl-6 col-xxl-12 col-md-6 title_nav">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="#">Nieuwe factuur</a>
+      </li>
+      <li>
+        <a href="#/pages/create-order">Nieuwe boeking</a>
+      </li>
+      <li>
+        <a href="#">Upload MT940 bankbestand</a>
+      </li>
+      <li>
+        <a href="#">Upload bonnen</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xxxl-3 col-xxl-4 col-md-4">
+    <nb-card>
+      <nb-card-header>
+        <span>Openstaande acties</span>
+      </nb-card-header>
+      <nb-card-body>
+        <table class="openstaande_acties">
+          <tr class="border_bot">
+            <td>
+              <i class="fa fa-upload"></i>
+            </td>
+            <td>Maak je
+              <a href="#">eerste factuur</a>
+            </td>
+          </tr>
+          <tr class="border_bot">
+            <td>
+              <i class="fa fa-upload"></i>
+            </td>
+            <td>Upload je
+              <a href="#">eerste bankbestand</a>
+            </td>
+          </tr>
+          <tr class="border_bot">
+            <td>
+              <i class="fa fa-upload"></i>
+            </td>
+            <td>Klik op de link in je e-mail om je jon mail ehad? Verstuur
+              <a href="#">account to</a> bevestigen. Geen e-„ g bevestiging e-mail opnieuw Kas en bank </td>
+          </tr>
+        </table>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-xxxl-6 col-xxl-12 col-md-8">
+    <div class="row">
+      <div class="col-xxxl-6 col-xxl-12 col-md-6">
+        <nb-card size="xsmall">
+          <nb-card-header>
+            <span>Facturen en offertes</span>
+          </nb-card-header>
+          <nb-card-body>
+              <table width="100%">
+                  <tr>
+                    <td>
+                        Verstuurde factuur 2017  <span class="badge badge-primary">5</span>
+                    </td>
+                    <td><strong>&euro; 0</strong></td>
+                  </tr>
+                </table>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+      <div class="col-xxxl-6 col-xxl-12 col-md-6">
+        <nb-card size="xsmall">
+          <nb-card-header>
+            <span>Winst en verlies 2017</span>
+          </nb-card-header>
+          <nb-card-body>
+              <table width="100%" class="winst_verlies">
+                  <tr class="border_bot">
+                      <td>Opbrengsten</td>
+                      <td><strong>&euro; 0</strong></td>
+                  </tr>
+                  <tr class="border_bot">
+                    <td>Kosten</td>
+                    <td><strong>&euro; 0</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Winst</td>
+                    <td><strong>&euro; 0</strong></td>
+                  </tr>
+                </table>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xxxl-6 col-xxl-12 col-md-6">
+        <nb-card size="xsmall">
+          <nb-card-header>
+            <span>Balans &euro; 0</span>
+          </nb-card-header>
+          <nb-card-body>
+              <table width="100%" class="balans">
+                  <tr>
+                      <td>Bedrijfsmiddelen <strong>&euro; 0</strong></td>
+                      <td>Eigen vermogen <strong>&euro; 0</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Bedrijfskapitaal <strong>&euro; 0</strong></td>
+                    <td>Schulden <strong>&euro; 0</strong></td>
+                  </tr>
+                </table>
+          </nb-card-body>
+        </nb-card>
+      </div>
+
+      <div class="col-xxxl-6 col-xxl-12 col-md-6">
+        <nb-card size="xsmall">
+          <nb-card-header>
+            <span>Btw</span>
+          </nb-card-header>
+          <nb-card-body>
+              <table width="100%" class="btw">
+                  <tr>
+                      <td>Q1 2017</td>
+                      <td>Q2 2017</td>
+                      <td>Q3 2017</td>
+                  </tr>
+                  <tr>
+                      <td><strong>&euro; 0</strong></td>
+                      <td><strong>&euro; 0</strong></td>
+                      <td><strong>&euro; 0</strong></td>
+                  </tr>
+                  <tr>
+                      <td colspan="3">Te betalen Q4 2017 <strong>&euro; 0</strong></td>
+                  </tr>
+                </table>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-xxxl-12 col-xxl-12 col-md-12">
+      <nb-card size="xsmall">
+        <nb-card-header>
+          <span>Kas en bank</span>
+        </nb-card-header>
+        <nb-card-body>
+            <table width="100%" class="kas_en_bank">
+                <tr class="border_bot">
+                    <td>Kas</td>
+                    <td>Saldo in kas</td>
+                    <td>1 november 2017</td>
+                    <td><strong>&euro; 0</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="4">Total<strong>&euro; 0</strong></td>
+                </tr>
+              </table>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>

@@ -1,0 +1,76 @@
+<nb-card>
+  <nb-card-header>Create User</nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="CreateUserForm" (ngSubmit)="createUser()" id="create-form" role="form">
+      <div class="row form-group">
+        <div class="col-sm-6">
+            <label>Linked Entity Name</label>
+            <input type="text" name="LinkedEntityID" id="LinkedEntityID" tabindex="1" class="form-control" placeholder="f68f06b1-ebd7-40bb-ac86-7712d5683187" formControlName="LinkedEntityID" [(ngModel)] ="userData.LinkedEntityID">
+                <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+        </div>
+        <div class="col-sm-6">
+        <label>Given Name</label>
+        <div class="form-group">
+            <input type="text" name="GivenName" id="GivenName" tabindex="2" class="form-control" placeholder="Given Name" formControlName="GivenName" [(ngModel)]="userData.GivenName">
+            <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Insertion</label>
+          <input type="text" placeholder="Insertion" class="form-control" name="Insertion" id="Insertion" tabindex="3" formControlName="Insertion" [(ngModel)]="userData.Insertion" />
+        </div>
+        <div class="col-sm-6">
+            <label>Family name</label>
+            <input type="text" name="FamilyName" id="FamilyName" tabindex="4" class="form-control" placeholder="Family Name" formControlName="FamilyName" [(ngModel)]="userData.FamilyName">
+          <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->    
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Email</label>
+          <input type="text" name="EmailAddress" id="EmailAddress" tabindex="5" class="form-control" placeholder="Email Address" formControlName="EmailAddress" [(ngModel)]="userData.EmailAddress">
+        <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+          <label>Ietf Language Tag</label>
+          <input type="text" name="IetfLanguageTag" id="IetfLanguageTag" tabindex="6" class="form-control" placeholder="Ietf Language Tag" formControlName="IetfLanguageTag" [(ngModel)]="userData.IetfLanguageTag">
+        <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+      </div>
+
+      <div class="row form-group">
+          <div class="col-sm-6">
+            <label>Company Name</label>
+            <input type="text" placeholder="Company Name" class="form-control" name="CompanyName" id="CompanyName" tabindex="7" formControlName="CompanyName" [(ngModel)]="userData.CompanyName" />
+            <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>
+          <div class="col-sm-6">
+            <label>Notes</label>
+            <input type="text" placeholder="Notes" class="form-control" name="Notes" id="Notes" tabindex="8" formControlName="Notes" [(ngModel)]="userData.Notes" />
+            <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>
+        </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Password</label>
+          <input type="password" placeholder="Password" class="form-control" name="Password" id="Password" tabindex="9" formControlName="Password" [(ngModel)]="userData.Password" />
+        </div>
+        <div class="col-sm-6">
+          <label>Confirm password</label>
+          <input type="password" placeholder="Confirm password" class="form-control" name="ConfirmedPassword" id="ConfirmedPassword" tabindex="10" formControlName="ConfirmedPassword" [(ngModel)]="userData.ConfirmedPassword" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+            <button type="submit " name="create-submit " id="create-submit" tabindex="11 " class="btn btn-primary" [disabled]="!CreateUserForm.valid">Create User</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

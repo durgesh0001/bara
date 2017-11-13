@@ -1,0 +1,46 @@
+<nb-card>
+    <nb-card-header>Products</nb-card-header>  
+    <nb-card-body>
+        <div class="table-responsive">
+        <table class="table table-striped" [mfData]="productsDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
+            <thead>
+              <tr>
+                <th style="width: 11%">
+                  <mfDefaultSorter by="Name">Name</mfDefaultSorter>
+                </th>
+                <th style="width: 11%">
+                  <mfDefaultSorter by="ShortName">Short Name</mfDefaultSorter>
+                </th>
+                <th style="width: 11%">
+                  <mfDefaultSorter by="Status">Status</mfDefaultSorter>
+                </th>
+                <th style="width: 11%">
+                  <mfDefaultSorter by="ProductItemQuantity">Product Item Quantity</mfDefaultSorter>
+                </th>
+                <th style="width: 11%">
+                  <mfDefaultSorter by="ProductItemDescription">Product Item Description</mfDefaultSorter>
+                </th>
+                <th style="width: 11%"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of mf.data; let i=index;">
+                  <td>{{item.Name}}</td>   
+                  <td>{{item.ShortName}}</td>
+                  <td>{{item.Status}}</td>                
+                  <td>{{item.ProductItemQuantity}}</td>
+                  <td>{{item.ProductItemDescription}}</td>             
+                  <td><a href="#">Edit</a></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6">
+                  <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+          </div>
+      </nb-card-body>
+  </nb-card>

@@ -1,0 +1,38 @@
+<nb-card>
+  <nb-card-header>Create Vat</nb-card-header>  
+  <nb-card-body>
+    <form [formGroup]="CreateVatForm" (ngSubmit)="createVat()" id="create-vat-form" role="form">
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Name</label>
+              <input type="text" name="Name" id="Name" tabindex="1" class="form-control" placeholder="Name" formControlName="Name" [(ngModel)]="vatData.Name">
+              <!-- <p *ngIf="!UpdateForm.controls.UserID.valid  && UpdateForm.controls.UserID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>
+        <div class="col-sm-6">
+            <label>Short name</label>
+            <input type="text" name="ShortName" id="ShortName" tabindex="2" class="form-control" placeholder="Short name" formControlName="ShortName" [(ngModel)] ="vatData.ShortName">
+                <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+        </div>          
+      </div>
+
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label>Type</label>
+          <input type="text" name="Type" id="Type" tabindex="3" class="form-control" placeholder="Type" formControlName="Type" [(ngModel)] ="vatData.Type">
+              <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+      </div>
+        <div class="col-sm-6">
+          <label>Notes</label>
+              <input type="text" name="Notes" id="Notes" tabindex="4" class="form-control" placeholder="Notes" formControlName="Notes" [(ngModel)]="vatData.Notes">
+              <!-- <p *ngIf="!UpdateForm.controls.Type.valid  && UpdateForm.controls.Type.dirty" class="danger">*Please enter a valid firstname.</p> -->
+        </div>                    
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+            <button type="submit " name="create-vat-submit " id="create-vat-submit" tabindex="6" class="btn btn-primary" [disabled]="!CreateVatForm.valid">Create Vat Code</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>

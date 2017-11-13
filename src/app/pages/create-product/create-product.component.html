@@ -1,0 +1,70 @@
+<nb-card>
+    <nb-card-header>Create Product</nb-card-header>  
+    <nb-card-body>
+      <form [formGroup]="CreateProductForm" (ngSubmit)="createProduct()" id="create-product-form" role="form">
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label>Name</label>
+                <input type="text" name="Name" id="Name" tabindex="1" class="form-control" placeholder="Name" formControlName="Name" [(ngModel)]="productData.Name">
+                <!-- <p *ngIf="!UpdateForm.controls.UserID.valid  && UpdateForm.controls.UserID.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>
+          <div class="col-sm-6">
+              <label>Status</label>
+              <input type="text" name="Status" id="Status" tabindex="2" class="form-control" placeholder="Active or InActive" formControlName="Status" [(ngModel)] ="productData.Status">
+                  <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityID.valid  && UpdateForm.controls.LinkedEntityID.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+          </div>          
+        </div>
+
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label>Parent ID</label>
+            <input type="text" name="ParentID" id="ParentID" tabindex="3" class="form-control" placeholder="86225274-0b01-499e-b55e-aac4b9d17b65" formControlName="ParentID" [(ngModel)] ="productData.ParentID">
+                <!-- <p *ngIf="!UpdateForm.controls.LinkedEntityName.valid  && UpdateForm.controls.LinkedEntityName.dirty" class="danger">*Please enter a valid firstname.</p> -->            
+        </div>
+          <div class="col-sm-6">
+            <label>Short Name</label>
+                <input type="text" name="ShortName" id="ShortName" tabindex="4" class="form-control" placeholder="Short Name" formControlName="ShortName" [(ngModel)]="productData.ShortName">
+                <!-- <p *ngIf="!UpdateForm.controls.Type.valid  && UpdateForm.controls.Type.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>                    
+        </div>
+  
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label>Customer ID</label>
+            <input type="text" placeholder="CustomerID" class="form-control" name="Customer ID" id="Tags" tabindex="5" formControlName="CustomerID" [(ngModel)]="productData.CustomerID" />
+          </div>
+          <div class="col-sm-6">
+              <label>Product Item Supply ID </label>
+              <input type="text" name="ProductItemSupplyID" id="ProductItemSupplyID" tabindex="6" class="form-control" placeholder="Product Item Supply ID" formControlName="ProductItemSupplyID" [(ngModel)]="productData.ProductItemSupplyID ">
+            <!-- <p *ngIf="!UpdateForm.controls.Insertion.valid  && UpdateForm.controls.Insertion.dirty" class="danger">*Please enter a valid firstname.</p> -->
+          </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-6">
+                <label>Product Item Quantity</label>
+                <input type="text" name="ProductItemQuantity" id="ProductItemQuantity" tabindex="7" class="form-control" placeholder="Product Item Quantity" formControlName="ProductItemQuantity" [(ngModel)]="productData.ProductItemQuantity">
+              <!-- <p *ngIf="!UpdateForm.controls.FamilyName.valid  && UpdateForm.controls.FamilyName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+            </div>
+            <div class="col-sm-6">
+                <label>Product Item Description</label>
+                <input type="text" placeholder="Product Item Description" class="form-control" name="ProductItemDescription" id="ProductItemDescription" tabindex="8" formControlName="ProductItemDescription" [(ngModel)]="productData.ProductItemDescription" />
+                <!-- <p *ngIf="!UpdateForm.controls.FullName.valid  && UpdateForm.controls.FullName.dirty" class="danger">*Please enter a valid firstname.</p> -->
+            </div>
+          </div>
+
+          <div class="row form-group">
+              <div class="col-sm-6">
+                <label>Tags</label>
+                <input type="text" placeholder="Tags" class="form-control" name="Tags" id="Tags" tabindex="9" formControlName="Tags" [(ngModel)]="productData.Tags" />
+              </div>
+            </div>
+    
+        <div class="form-group row">
+          <div class="col-sm-12">
+              <button type="submit " name="create-submit " id="create-submit" tabindex="10" class="btn btn-primary" [disabled]="!CreateProductForm.valid">Create Product</button>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+</nb-card>

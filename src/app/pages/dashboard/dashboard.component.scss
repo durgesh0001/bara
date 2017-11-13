@@ -1,0 +1,118 @@
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+
+@import '~bootstrap/dist/css/bootstrap';
+
+
+@include nb-install-component() {
+  .solar-card nb-card-header {
+    border: none;
+    padding-bottom: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    ngx-traffic {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(is) {
+    /deep/ nb-card.large-card {
+      height: nb-theme(card-height-medium);
+    }
+  }
+}
+
+nb-card-header{
+  background: #dce1e8;
+}
+
+.title_nav{
+  justify-content: flex-end;
+}
+
+.title_nav .navbar-nav.navbar-right{
+  display: table-row;
+}
+
+.title_nav .navbar-nav.navbar-right li{
+  display: table-cell;
+  padding-left: 10px;
+}
+
+.title_nav .navbar-nav.navbar-right li a{
+  background: #fff;
+  border: 1px solid #3a9aca;
+  border-radius: 5px;
+  padding: 3px 5px;
+  display: block;
+  color: #3a9aca;
+}
+
+.title_nav .navbar-nav.navbar-right li a:hover{
+  text-decoration: none;
+  color: #fff;
+  background:#3a9aca;
+}
+
+.openstaande_acties .fa{
+  border:1px solid #3a9aca;
+  border-radius: 50%;
+  display: block;
+  padding: 10px;
+  color: #3a9aca;
+}
+
+.openstaande_acties tr td:last-child{
+  padding-left: 10px;
+}
+
+.winst_verlies tr:last-child{
+  font-size:20px;
+  font-weight: 600;
+}
+
+.winst_verlies tr:last-child td{
+  padding-top: 10px;
+}
+
+.balans tr td{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.balans tr td:first-child{
+  padding-right: 10px;
+}
+
+.balans tr td:last-child{
+  border-left: 1px solid rgba(0,0,0,0.1);
+  padding-left: 10px;
+}
+
+.btw tr td{
+  border-left: 1px solid rgba(0,0,0,0.1);
+  padding-left: 10px;
+}
+
+.btw tr td:first-child{
+  border-left: 0;
+  padding-left: 0px;
+}
+
+.btw tr:last-child td{
+  padding-top: 15px;
+  text-align: right;
+  font-size: 18px;
+}
+
+.kas_en_bank tr:last-child td{
+  padding-top: 15px;
+  text-align: right;
+  font-size: 22px;
+}
+
+.kas_en_bank tr:last-child td strong{
+  padding-left: 15px;
+}
