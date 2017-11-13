@@ -48,7 +48,7 @@ import { OrderListService } from './bara-services/order-list.service';
 import { CreateOrderService } from './bara-services/create-order.service';
 import { InvoiceListService } from './bara-services/invoice-list.service';
 import { CreateInvoiceService } from './bara-services/create-invoice.service';
-
+import { AuthAccountService } from './bara-services/auth.bara.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -96,7 +96,8 @@ import { CreateInvoiceService } from './bara-services/create-invoice.service';
     OrderListService,
     CreateOrderService,
     InvoiceListService,
-    CreateInvoiceService
+    CreateInvoiceService,
+    AuthAccountService
   ],
 })
 export class AppModule {

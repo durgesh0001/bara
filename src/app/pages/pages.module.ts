@@ -36,7 +36,6 @@ import { InvoicesComponent } from './invoices/invoices.component';
 import { CreateInvoiceComponent } from './create-invoice/create-invoice.component';
 import { ModalComponent } from './ui-features/modals/modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from './Auth/Login/login.component';
 
 
 
@@ -85,8 +84,7 @@ const PAGES_COMPONENTS = [
     OrderComponent,
     CreateOrderComponent,
     InvoicesComponent,
-    CreateInvoiceComponent,
-    LoginComponent
+    CreateInvoiceComponent
   ],
   entryComponents: [
     ModalComponent
