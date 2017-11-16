@@ -1,0 +1,36 @@
+
+    <div class="row form-group">
+      <div class="col-sm-3">
+
+      </div>
+      <div class="col-sm-6">
+        <nb-card>
+          <nb-card-header>Login</nb-card-header>
+          <nb-card-body>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" id="create-order-form" role="form">
+          <div class="row form-group">
+            <div class="col-sm-12">
+              <label>Email</label>
+              <input type="email" name="email" id="emaill" tabindex="1" class="form-control" placeholder="Email" formControlName="email" [(ngModel)]="loginData.email" required>
+              <p style="color:red"  *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty" class="danger">*Required</p>
+            </div>
+            <div class="col-sm-12">
+              <label>Passowrd</label>
+              <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" formControlName="password" [(ngModel)]="loginData.password" required>
+              <p style="color:red"  *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty" class="danger">*Required</p>
+            </div>
+            <div class="col-sm-12">
+              <br>
+               <br>
+                <button type="submit " name="create-submit " id="create-submit"  class="btn btn-block btn-primary" [disabled]="!loginForm.valid">Login</button>
+            </div>
+          </div>
+        </form>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="col-sm-3">
+
+      </div>
+
+   </div>

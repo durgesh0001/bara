@@ -16,14 +16,14 @@ export class UnitsComponent implements OnInit {
   options: any;
   settings:any;
   data:any;
-  
-  constructor(private listAccount:UnitsListingService) {   
+
+  constructor(private listAccount:UnitsListingService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.options = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.options = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.options));
-    
+
     this.settings = {
       columns: {
         Name: {
@@ -41,7 +41,7 @@ export class UnitsComponent implements OnInit {
       }
     };
 
-    
+
     // this.data = [
     //   {
     //     id: 1,
@@ -55,9 +55,9 @@ export class UnitsComponent implements OnInit {
     //     username: "Antonette",
     //     email: "Shanna@melissa.tv"
     //   },
-      
+
     //   // ... list of items
-      
+
     //   {
     //     id: 11,
     //     name: "Nicholas DuBuque",
@@ -67,13 +67,13 @@ export class UnitsComponent implements OnInit {
     // ];
     // this.listAccount.getAcountDetails(this.options).subscribe((userDetails) =>{
     //   //console.log(userData);
-    //   this.userDetails = userDetails; 
-    // });    
+    //   this.userDetails = userDetails;
+    // });
   }
 
 
   ngOnInit(): void  {
-    this.getAcountDetails(); 
+    this.getAcountDetails();
   }
 
   getAcountDetails(){

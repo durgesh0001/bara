@@ -13,16 +13,16 @@ export class CreateCategoriesComponent implements OnInit {
   headers: any;
   data: any
   CreateCategoriesForm: FormGroup;
-  categoriesData = { Name: '', Status: '', ParentID:'', Notes: '', ShortName: '', CategoryStatus: '', VatCodeID: '',  CustomerID: '', SupplierID: '', DiscountValue: '', DiscountValueType: '', DiscountValidFrom: '', MarginValue: '', MarginValueType: '', MarginValidFrom: '' } 
-  
+  categoriesData = { Name: '', Status: '', ParentID:'', Notes: '', ShortName: '', CategoryStatus: '', VatCodeID: '',  CustomerID: '', SupplierID: '', DiscountValue: '', DiscountValueType: '', DiscountValidFrom: '', MarginValue: '', MarginValueType: '', MarginValidFrom: '' }
+
   constructor(private _createCategoriesService: CreateCategoriesService, public formBuilder: FormBuilder) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.data = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.data = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.data));
     console.log('Create categories component works');
-    
+
     this.CreateCategoriesForm = formBuilder.group({
       Name: ['', Validators.compose([])],
       Status: ['', Validators.compose([])],
@@ -44,8 +44,8 @@ export class CreateCategoriesComponent implements OnInit {
       MarginValidFrom: ['', Validators.compose([])],
     });
 
-  
-  } 
+
+  }
 
   createCategories() {
     this._createCategoriesService.categoriesCreate(this.categoriesData).then((categoriesDetail) => {

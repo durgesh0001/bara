@@ -11,7 +11,7 @@ export class CreateProductService {
 
    productCreate(data) {
     let headers = new Headers({ "content-type": "application/json", });
-    headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
+    headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
     let options = new RequestOptions({ headers: headers });
 
     return new Promise((resolve, reject) => {

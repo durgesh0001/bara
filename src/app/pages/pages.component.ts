@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { MENU_ITEMS } from './pages-menu';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'ngx-pages',
@@ -13,4 +15,16 @@ import { MENU_ITEMS } from './pages-menu';
 })
 export class PagesComponent {
   menu = MENU_ITEMS;
+  constructor(private router:Router)
+  {
+    if(localStorage.getItem('token') != null )
+    {
+      this.router.navigate(['pages', 'dashboard']);
+    }
+    else
+    {
+      this.router.navigate(['pages', 'login']);
+
+    }
+  }
 }

@@ -19,15 +19,15 @@ export class CreateSuppliesComponent implements OnInit {
   constructor(private _createSuppliesService: CreateSuppliesService, public formBuilder: FormBuilder) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.data = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.data = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.data));
     console.log('Create supplies component works');
-    
+
     this.CreateSuppliesForm = formBuilder.group({
       Name: ['', Validators.compose([])],
       Status: ['', Validators.compose([])],
-      Type: ['', Validators.compose([])],      
+      Type: ['', Validators.compose([])],
       Notes: ['', Validators.compose([])],
       Reference: ['', Validators.compose([])],
       ShortName: ['', Validators.compose([])],
@@ -47,7 +47,7 @@ export class CreateSuppliesComponent implements OnInit {
       MarginValidFrom: ['', Validators.compose([])],
     });
 
-  } 
+  }
 
   createSupplies() {
     this._createSuppliesService.suppliesCreate(this.suppliesData).then((suppliesDetail) => {

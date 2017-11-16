@@ -86,7 +86,7 @@ export class UsersComponent implements OnInit {
   //     role: "Antonette",
   //     email: "Shanna@melissa.tv",
   //     status: "Bret"
-  //   },    
+  //   },
   //   {
   //     name: "Nicholas DuBuque",
   //     type: "Leanne",
@@ -101,10 +101,10 @@ export class UsersComponent implements OnInit {
   constructor(private listAccount:UsersListService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.options = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.options = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.options));
-   
+
     this.listAccount.getAcountDetails(this.options).subscribe((userData) =>{
       //console.log(userData);
       this.userDetails = userData;

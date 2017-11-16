@@ -14,17 +14,17 @@ export class VatCodesComponent implements OnInit {
   vatDetails: any;
   headers: any;
   options: any;
-  
-  constructor(private listAccount:VatCodeService) {   
+
+  constructor(private listAccount:VatCodeService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.options = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.options = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.options));
   }
 
   ngOnInit(): void  {
-    this.getVatDetails(); 
+    this.getVatDetails();
   }
 
   getVatDetails(){

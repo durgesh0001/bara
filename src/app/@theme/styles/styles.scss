@@ -18,3 +18,16 @@
   // loading progress bar
   @include ngx-pace-theme();
 };
+.datepicker-container input{
+  max-width:151px;
+  border:2px solid #dadfe6 !important;
+  font-family:Roboto;
+  border-radius:0.375rem;
+  padding:0.54rem 1rem !important;
+}
+.form-control {
+  padding:0.3rem 1rem;
+}
+select.form-control:not([size]):not([multiple]){
+  height:calc(1.2rem + 20px);
+}

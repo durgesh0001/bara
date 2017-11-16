@@ -17,13 +17,13 @@ export class CreateUnitComponent implements OnInit {
   constructor(private _createUnitService: CreateUnitService, public formBuilder: FormBuilder) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.data = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.data = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.data));
     console.log('Create Unit component works');
-    
+
     this.CreateUnitForm = formBuilder.group({
-      Name: ['', Validators.compose([])],      
+      Name: ['', Validators.compose([])],
       ShortName: ['', Validators.compose([])],
       Tags: ['', Validators.compose([])],
       Status: ['', Validators.compose([])],

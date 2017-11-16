@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { DataTableModule } from "angular2-datatable";
+import { Router } from '@angular/router';
 
 import { OrderListService } from '../../bara-services/order-list.service';
 
@@ -15,12 +16,20 @@ export class OrderComponent implements OnInit {
   headers: any;
   options: any;
 
-  constructor(private listAccount: OrderListService) {
+  constructor(private router:Router,private listAccount: OrderListService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
     this.options = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.options));
+    if(localStorage.getItem('token') != null )
+    {
+    }
+    else
+    {
+      this.router.navigate(['pages', 'login']);
+
+    }
   }
 
   ngOnInit(): void {

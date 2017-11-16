@@ -1,154 +1,290 @@
 <nb-card>
-  <nb-card-header>Create Order</nb-card-header>
+  <nb-card-header>{{OrderLabel}}</nb-card-header>
   <nb-card-body>
-    <form [formGroup]="CreateOrderForm" (ngSubmit)="createOrder()" id="create-order-form" role="form">
-      <div class="row form-group">
+    <div class="row form-group">
+      <div class="col-sm-6">
+        <nb-card>
+          <nb-card-body>
+        <div class="row form-group">
+          <div class="col-sm-12">
+            <h1>New Booking</h1>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label>Cost post</label>
+          </div>
+          <div class="col-sm-6">
+            <p>Cost | Overheads</p>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label>Description</label>
+          </div>
+          <div class="col-sm-6">
+            <p>{{orderData.Description1}}</p>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label>Billing Date</label>
+          </div>
+          <div class="col-sm-6">
+            <p>{{orderData.Date | date: 'dd MMMM yyyy'}}</p>
+          </div>
+        </div>
+        <div class="row form-group">
         <div class="col-sm-6">
-          <label>Number</label>
-          <input type="text" name="Number" id="Number" tabindex="6" class="form-control" placeholder="Number" formControlName="Number" [(ngModel)]="orderData.Number" required>
-           <p style="color:red"  *ngIf="!CreateOrderForm.controls.Number.valid  && CreateOrderForm.controls.Number.dirty" class="danger">*Required</p>
+          <label>Delivery Date</label>
         </div>
         <div class="col-sm-6">
-          <label>Revision</label>
-          <input type="text" name="Revision" id="Revision" tabindex="7" class="form-control" placeholder="Revision" formControlName="Revision" [(ngModel)]="orderData.Revision" required>
-           <p style="color:red"  *ngIf="!CreateOrderForm.controls.Revision.valid  && CreateOrderForm.controls.Revision.dirty" class="danger">*Required</p>
-        </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <label>Customer</label>
-          <select  class="form-control"  name="CustomerID" id="CustomerID" tabindex="8" class="form-control"  [(ngModel)]="orderData.CustomerID" formControlName="CustomerID">
-            <option *ngFor="let c of customerDetails" [ngValue]="c.CustomerID">{{c.Name}}</option>
-          </select>
-          <p style="color:red"  *ngIf="!CreateOrderForm.controls.CustomerID.valid  && CreateOrderForm.controls.CustomerID.dirty" class="danger">*Required</p>
-        </div>
-        <div class="col-sm-6">
-        <label>Type</label>
-        <select  class="form-control" name="Type" id="Type" tabindex="8" value="Purchase" formControlName="Type" [(ngModel)]="orderData.Type" required>
-          <option  [ngValue]="0" selected>Purchase</option>
-          <option  [ngValue]="1">Sales</option>
-        </select>
-         <p style="color:red"  *ngIf="!CreateOrderForm.controls.Type.valid  && CreateOrderForm.controls.Type.dirty" class="danger">*Required.</p>
-        </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <label>Supply</label>
-          <select  class="form-control"  name="SupplierID" id="SupplierID" formControlName="SupplierID"  [(ngModel)]="orderData.SupplierID" >
-            <option *ngFor="let s of suppliersDetails" [ngValue]="s.SupplierID">{{s.Name}}</option>
-          </select>
-        </div>
-        <div class="col-sm-6">
-          <label>Project</label>
-          <select  class="form-control"  name="ProjectID" id="ProjectID" [(ngModel)]="orderData.ProjectID" formControlName="ProjectID"  >
-            <option *ngFor="let p of projectDetails" [ngValue]="p.ProjectID">{{p.Name}}</option>
-          </select>
+          <p></p>
         </div>
       </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <label>Date</label>
-          <input type="text" placeholder="DD/MM/YYYY" class="form-control" name="Date" id="Date" tabindex="13" formControlName="Date" [(ngModel)]="orderData.Date" required />
-          <p style="color:red"  *ngIf="!CreateOrderForm.controls.Date.valid  && CreateOrderForm.controls.Date.dirty" class="danger">*Required.</p>
+        <div class="row form-group">
+          <div class="col-sm-4">
+            <label>Total excl. VAT</label>
+          </div>
+          <div class="col-sm-4">
+            <p>
+              {{totalExcludingVatAmount}}
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <p> 0.00</p>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-4">
+            <label>Total VAT</label>
+          </div>
+          <div class="col-sm-4">
+            <p>(Supplier from the Netherlands)</p>
+          </div>
+          <div class="col-sm-4">
+            <p>
+              {{totalVatAmount}}</p>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-4">
+            <label>Total VAT incl</label>
+          </div>
+          <div class="col-sm-4">
+            <p></p>
+          </div>
+          <div class="col-sm-4">
+            <u>
+              {{totalIncludingVatAmount}}
+              </u>
+          </div>
+        </div>
+            <div class="row form-group">
+              <div class="col-sm-4">
+                <select   disabled  class="form-control"  >
+                <option selected>
+                  In Books
+                </option>
+                </select>
+              </div>
+              <div class="col-sm-4">
 
-        </div>
-        <div class="col-sm-6">
-          <label>Notes</label>
-          <input type="text" placeholder="Notes" class="form-control" name="Notes" id="Notes" tabindex="14" formControlName="Notes" [(ngModel)]="orderData.Notes" required/>
-          <p style="color:red"  *ngIf="!CreateOrderForm.controls.Notes.valid  && CreateOrderForm.controls.Notes.dirty" class="danger">*Required.</p>
+              </div>
+              <div class="col-sm-4">
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-4">
+              <label>To Be Booked</label>
+              </div>
+              <div class="col-sm-4">
 
-        </div>
+              </div>
+              <div class="col-sm-4">
+                <p>$0.00</p>
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
       </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <label>Status</label>
-          <select  class="form-control" name="Status" id="Status" tabindex="9" formControlName="Status" [(ngModel)]="orderData.Status" >
-            <option  [ngValue]="0" selected>Draft</option>
-            <option  [ngValue]="1">Quotation</option>
-            <option  [ngValue]="2">Final</option>
-            <option  [ngValue]="3">Invoiced</option>
-            <option  [ngValue]="4">Cancelled</option>
 
-          </select>
-          <p style="color:red"  *ngIf="!CreateOrderForm.controls.Status.valid  && CreateOrderForm.controls.Status.dirty" class="danger">*Required.</p>
-        </div>
-        <div class="col-sm-6">
-          <label>Reference</label>
-          <input type="text" placeholder="Reference" class="form-control" name="Reference" id="Reference" tabindex="10" formControlName="Reference" [(ngModel)]="orderData.Reference" required />
-          <p style="color:red"  *ngIf="!CreateOrderForm.controls.Reference.valid  && CreateOrderForm.controls.Reference.dirty" class="danger">*Required.</p>
-        </div>
-      </div>
-      <div class="row form-group">
-        <div class="col-sm-6">
-          <label>Description 1</label>
-          <textarea  placeholder="Description 1" class="form-control" name="Description1" id="Description1" tabindex="11" formControlName="Description1" [(ngModel)]="orderData.Description1"  >
+      <div class="col-sm-6">
+        <form [formGroup]="CreateOrderForm" (ngSubmit)="createOrder()" id="create-order-form" role="form">
+
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Number</label>
+              <input type="number" name="Number" id="Number" tabindex="1" class="form-control" placeholder="Number" formControlName="Number" [(ngModel)]="orderData.Number" required>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Number.valid  && CreateOrderForm.controls.Number.dirty" class="danger">*Required</p>
+            </div>
+            <div class="col-sm-6">
+              <label>Revision</label>
+              <input type="number" name="Revision" id="Revision" tabindex="2" class="form-control" placeholder="Revision" formControlName="Revision" [(ngModel)]="orderData.Revision" required>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Revision.valid  && CreateOrderForm.controls.Revision.dirty" class="danger">*Required</p>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Customer</label>
+              <select    name="CustomerID" id="CustomerID" tabindex="3" class="form-control"  [(ngModel)]="orderData.CustomerID" formControlName="CustomerID">
+                <option  value="" >Select Customer</option>
+                <option *ngFor="let c of customerDetails" [ngValue]="c.CustomerID">{{c.Name}}</option>
+              </select>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.CustomerID.valid  && CreateOrderForm.controls.CustomerID.dirty" class="danger">*Required</p>
+            </div>
+            <div class="col-sm-6">
+              <label>Type</label>
+              <select  class="form-control custom-select" name="Type" id="Type" tabindex="4" value="Purchase" formControlName="Type" [(ngModel)]="orderData.Type" required>
+                <option  value="" >Select Type</option>
+                <option  value="Purchase" selected>Purchase</option>
+                <option  value="Sales">Sales</option>
+              </select>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Type.valid  && CreateOrderForm.controls.Type.dirty" class="danger">*Required.</p>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Supplier</label>
+              <select  class="form-control"  name="SupplierID" tabindex="5" id="SupplierID" formControlName="SupplierID"  [(ngModel)]="orderData.SupplierID" >
+                <option  value="" >Select Supplier</option>
+                <option *ngFor="let s of suppliersDetails" [ngValue]="s.SupplierID">{{s.Name}}</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label>Project</label>
+              <select  class="form-control"  name="ProjectID" id="ProjectID" tabindex="6" [(ngModel)]="orderData.ProjectID" formControlName="ProjectID"  >
+                <option  value="" >Select Project</option>
+                <option *ngFor="let project of projectDetails" [ngValue]="project.ProjectID">{{project.Name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Date</label>
+              <div class="datepicker-container">
+              <ng-datepicker  class="ng2-datepikcer" [options]="optionsDate"  name="Date" id="Date" tabindex="7" formControlName="Date"  [(ngModel)]="orderData.Date"  required >
+              </ng-datepicker>
+              </div>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Date.valid  && CreateOrderForm.controls.Date.dirty" class="danger">*Required.</p>
+            </div>
+            <div class="col-sm-6">
+              <label>Notes</label>
+              <input type="text" placeholder="Notes" class="form-control" name="Notes" id="Notes" tabindex="8" formControlName="Notes" [(ngModel)]="orderData.Notes" required/>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Notes.valid  && CreateOrderForm.controls.Notes.dirty" class="danger">*Required.</p>
+
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Status</label>
+              <select  class="form-control" name="Status" id="Status" tabindex="9" formControlName="Status" [(ngModel)]="orderData.Status" >
+                <option  value="" >Select Status</option>
+                <option  value="Draft" >Draft</option>
+                <option  value="Quotation">Quotation</option>
+                <option  value="Final">Final</option>
+                <option  value="Invoiced">Invoiced</option>
+                <option  value="Cancelled">Cancelled</option>
+
+              </select>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Status.valid  && CreateOrderForm.controls.Status.dirty" class="danger">*Required.</p>
+            </div>
+            <div class="col-sm-6">
+              <label>Reference</label>
+              <input type="text" placeholder="Reference" class="form-control" name="Reference" id="Reference" tabindex="10" formControlName="Reference" [(ngModel)]="orderData.Reference" required />
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Reference.valid  && CreateOrderForm.controls.Reference.dirty" class="danger">*Required.</p>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Description 1</label>
+              <textarea  placeholder="Description 1" class="form-control" name="Description1" id="Description1" tabindex="11" formControlName="Description1" [(ngModel)]="orderData.Description1"  >
           </textarea>
-          <p style="color:red"  *ngIf="!CreateOrderForm.controls.Description1.valid  && CreateOrderForm.controls.Description1.dirty" class="danger">*Required.</p>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Description1.valid  && CreateOrderForm.controls.Description1.dirty" class="danger">*Required.</p>
 
-        </div>
-        <div class="col-sm-6">
-          <label>Description 2</label>
-          <textarea  placeholder="Description 2" class="form-control" name="Description2" id="Description2" tabindex="12" formControlName="Description2" [(ngModel)]="orderData.Description2" required >
+            </div>
+            <div class="col-sm-6">
+              <label>Description 2</label>
+              <textarea  placeholder="Description 2" class="form-control" name="Description2" id="Description2" tabindex="12" formControlName="Description2" [(ngModel)]="orderData.Description2" required >
           </textarea>
-          <p style="color:red"  *ngIf="!CreateOrderForm.controls.Description2.valid  && CreateOrderForm.controls.Description2.dirty" class="danger">*Required.</p>
-        </div>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.Description2.valid  && CreateOrderForm.controls.Description2.dirty" class="danger">*Required.</p>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Supply</label>
+              <select  class="form-control" name="OrderItemSupplyID" id="OrderItemSupplyID"  tabindex="13" formControlName="OrderItemSupplyID" [(ngModel)]="orderData.OrderItemSupplyID" >
+                <option value="">Select Supply</option>
+                <option value="">None</option>
+                <option *ngFor="let supplyData of supplyDetails" [ngValue]="supplyData.SupplyID">{{supplyData.Name}}</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label>Order Project</label>
+              <select  class="form-control"  name="OrderItemProjectID" id="OrderItemProjectID" tabindex="14" [(ngModel)]="orderData.OrderItemProjectID" formControlName="OrderItemProjectID"  >
+                <option  value="" >Select Project</option>
+                <option *ngFor="let project of projectDetails" [ngValue]="project.ProjectID">{{project.Name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Order Quantitiy</label>
+              <input type="number" placeholder="Order Quantity" class="form-control" name="OrderItemQuantity" tabindex="15" id="OrderItemQuantity"  formControlName="OrderItemQuantity" [(ngModel)]="orderData.OrderItemQuantity" required />
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemQuantity.valid  && CreateOrderForm.controls.OrderItemQuantity.dirty" class="danger">*Required.</p>
+
+            </div>
+            <div class="col-sm-6">
+              <label>Order Reference</label>
+              <input type="text" placeholder="Order Reference" class="form-control" name="OrderItemReference" tabindex="16" id="OrderItemReference"  formControlName="OrderItemReference" [(ngModel)]="orderData.OrderItemReference" required />
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemReference.valid  && CreateOrderForm.controls.OrderItemReference.dirty" class="danger">*Required.</p>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>Price</label>
+              <input type="number" placeholder="Order Price" class="form-control" name="OrderItemPrice" tabindex="17" id="OrderItemPrice"  formControlName="OrderItemPrice" [(ngModel)]="orderData.OrderItemPrice" required />
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemPrice.valid  && CreateOrderForm.controls.OrderItemPrice.dirty" class="danger">*Required.</p>
+
+            </div>
+            <div class="col-sm-6">
+              <label>AllowancePercent</label>
+              <input type="number" placeholder="Order Allowance Percent" class="form-control" name="OrderItemAllowancePercent" id="OrderItemAllowancePercent" tabindex="18" formControlName="OrderItemAllowancePercent" [(ngModel)]="orderData.OrderItemAllowancePercent" required />
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemAllowancePercent.valid  && CreateOrderForm.controls.OrderItemAllowancePercent.dirty" class="danger">*Required.</p>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+              <label>AllowanceFixed</label>
+              <input type="number" placeholder="Order Allow Fixed" class="form-control" name="OrderItemAllowanceFixed" id="OrderItemAllowanceFixed"  formControlName="OrderItemAllowanceFixed" [(ngModel)]="orderData.OrderItemAllowanceFixed" required />
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemAllowanceFixed.valid  && CreateOrderForm.controls.OrderItemAllowanceFixed.dirty" class="danger">*Required.</p>
+
+            </div>
+            <div class="col-sm-6">
+              <label>VatCode</label>
+              <select  class="form-control"  class="form-control" name="OrderItemVatCodeID" id="OrderItemVatCodeID"  formControlName="OrderItemVatCodeID" tabindex="19" [(ngModel)]="orderData.OrderItemVatCodeID">
+                <option  value="" >Select VatCode</option>
+                <option *ngFor="let vatCode of vatCodesDetails" [ngValue]="vatCode.VatCodeID">{{vatCode.Name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-12">
+              <label>Order Description</label>
+              <textarea  placeholder="Order Description" class="form-control" name="OrderItemDescription" id="OrderItemDescription" tabindex="20" formControlName="OrderItemDescription" [(ngModel)]="orderData.OrderItemDescription"  >
+          </textarea>
+              <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemDescription.valid  && CreateOrderForm.controls.OrderItemDescription.dirty" class="danger">*Required.</p>
+
+            </div>
+
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <button type="submit " name="create-submit " id="create-submit" tabindex="21" class="btn btn-primary" [disabled]="!CreateOrderForm.valid">{{ButtonLabel}}</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <button type="submit " name="create-submit " id="create-submit" tabindex="27" class="btn btn-primary" [disabled]="!CreateOrderForm.valid">Create Order</button>
-        </div>
-      </div>
-    </form>
-    <div>
     </div>
-  </nb-card-body>
-</nb-card>
-<nb-card>
-  <nb-card-header>Orders</nb-card-header>
-  <nb-card-body>
-    <div class="table-responsive">
-      <table class="table table-striped" [mfData]="orderDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
-        <thead>
-        <tr>
-          <th style="width: 19%">
-            <mfDefaultSorter by="OrderID">Order ID</mfDefaultSorter>
-          </th>
-          <th style="width: 10%">
-            <mfDefaultSorter by="Type">Type</mfDefaultSorter>
-          </th>
-          <th style="width: 18%">
-            <mfDefaultSorter by="Owner">Owner</mfDefaultSorter>
-          </th>
-          <th style="width: 22%">
-            <mfDefaultSorter by="Date">Date</mfDefaultSorter>
-          </th>
-          <th style="width: 14%">
-            <mfDefaultSorter by="TotalExcludingVatAmount">Total Excluding Vat Amount</mfDefaultSorter>
-          </th>
-          <th style="width: 10%">
-            <mfDefaultSorter by="Status">Status</mfDefaultSorter>
-          </th>
-          <th style="width: 5%"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let item of mf.data; let i=index;">
-          <td>{{item.OrderID}}</td>
-          <td>{{item.Type}}</td>
-          <td>{{item.Owner}}</td>
-          <td>{{item.Date}}</td>
-          <td>{{item.TotalExcludingVatAmount}}</td>
-          <td>{{item.Status}}</td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-          <td colspan="7">
-            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-          </td>
-        </tr>
-        </tfoot>
-      </table>
-    </div>
-  </nb-card-body>
-</nb-card>
+    </nb-card-body>
+    </nb-card>F

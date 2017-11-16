@@ -19,11 +19,11 @@ export class CreateProjectComponent implements OnInit {
   constructor(private _createProjectService: CreateProjectService, public formBuilder: FormBuilder) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.data = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.data = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.data));
     console.log('Create customer component works');
-    
+
     this.CreateProjectForm = formBuilder.group({
       Name: ['', Validators.compose([])],
       Status: ['', Validators.compose([])],
@@ -37,7 +37,7 @@ export class CreateProjectComponent implements OnInit {
       //Client: ['', Validators.compose([])],
       //Customer: ['', Validators.compose([])],
     });
-  } 
+  }
 
   createProject() {
     this._createProjectService.projectCreate(this.projectData).then((projectDetail) => {

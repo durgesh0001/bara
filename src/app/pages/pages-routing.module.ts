@@ -31,6 +31,7 @@ import { OrderComponent } from './order/order.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { CreateInvoiceComponent } from './create-invoice/create-invoice.component';
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [{
   path: '',
@@ -52,7 +53,12 @@ const routes: Routes = [{
   },  {
     path: 'operators',
     component: OperatorsComponent,
-  },  {
+  },
+    {
+      path: 'login',
+      component: LoginComponent,
+    },
+    {
     path: 'create-operators',
     component: CreateOperatorComponent,
   }, {
@@ -94,7 +100,8 @@ const routes: Routes = [{
   }, {
     path: 'suppliers',
     component: SuppliersComponent,
-  }, {
+  },
+    {
     path: 'create-supplier',
     component: CreateSupplierComponent,
   }, {
@@ -115,13 +122,19 @@ const routes: Routes = [{
   }, {
     path: 'create-order',
     component: CreateOrderComponent,
-  }, {
+  },
+    {
+      path: 'update-order/:orderId',
+      component: CreateOrderComponent,
+    },
+    {
     path: 'invoices',
     component: InvoicesComponent,
   }, {
     path: 'create-invoice',
     component: CreateInvoiceComponent,
-  }, {
+  },
+    {
     path: 'test-component',
     component: TestComponentComponent,
   }, {

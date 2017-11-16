@@ -19,24 +19,24 @@ export class CreateProductComponent implements OnInit {
   constructor(private _createProductService: CreateProductService, public formBuilder: FormBuilder) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.data = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.data = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.data));
     console.log('Create product component works');
-    
+
     this.CreateProductForm = formBuilder.group({
       CustomerID: ['', Validators.compose([])],
       Name: ['', Validators.compose([])],
       Status: ['', Validators.compose([])],
-      ParentID: ['', Validators.compose([])],     
+      ParentID: ['', Validators.compose([])],
       Tags: ['', Validators.compose([])],
       ShortName: ['', Validators.compose([])],
-      ProductItemSupplyID: ['', Validators.compose([])],     
+      ProductItemSupplyID: ['', Validators.compose([])],
       ProductItemDescription: ['', Validators.compose([])],
       ProductItemQuantity: ['', Validators.compose([])],
     });
 
-  } 
+  }
 
   createProduct() {
     this._createProductService.productCreate(this.productData).then((productDetail) => {

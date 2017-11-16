@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { EditAccountService } from '../../bara-services/bara.service';
 import { FormBuilder, FormGroup, Validators, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'account-edit',
@@ -14,7 +15,7 @@ export class AccountEditComponent implements OnInit {
   UpdateForm: FormGroup;
   userData = { LinkedEntityID: '', GivenName: '', IetfLanguageTag:'',Insertion: '', FamilyName: '', EmailAddress: '', Password: '', ConfirmedPassword: '', Notes: '' };
 
-  constructor(private _editAccountService: EditAccountService, public formBuilder: FormBuilder) {
+  constructor(private router:Router,private _editAccountService: EditAccountService, public formBuilder: FormBuilder) {
     //console.log('account-edit works');
     this.UpdateForm = formBuilder.group({
       LinkedEntityID: ['', Validators.compose([])],
@@ -27,7 +28,15 @@ export class AccountEditComponent implements OnInit {
       Password: ['', Validators.compose([])],
       ConfirmedPassword: ['', Validators.compose([])],
     });
-  }  
+    if(localStorage.getItem('token') != null )
+    {
+    }
+    else
+    {
+      this.router.navigate(['pages', 'login']);
+
+    }
+  }
 
   updateUser() {
     this._editAccountService.userDetailupdate(this.userData).then((userDetail) => {
@@ -37,7 +46,7 @@ export class AccountEditComponent implements OnInit {
     });
   }
 
-  // Test API start 
+  // Test API start
   //loadUserData() {
   //   this._editAccountService.gerCurrentTime().subscribe(
   //     data => this.getData = JSON.stringify(data),

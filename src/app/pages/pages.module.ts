@@ -34,8 +34,12 @@ import { OrderComponent } from './order/order.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { CreateInvoiceComponent } from './create-invoice/create-invoice.component';
+import {LoginComponent} from "./login/login.component";
 import { ModalComponent } from './ui-features/modals/modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgDatepickerModule } from 'ng2-datepicker';
+
+
 
 
 
@@ -53,6 +57,7 @@ const PAGES_COMPONENTS = [
     DashboardModule,
     Ng2SmartTableModule,
     DataTableModule,
+    NgDatepickerModule
   ],
   declarations: [
     ...PAGES_COMPONENTS,
@@ -84,7 +89,8 @@ const PAGES_COMPONENTS = [
     OrderComponent,
     CreateOrderComponent,
     InvoicesComponent,
-    CreateInvoiceComponent
+    CreateInvoiceComponent,
+    LoginComponent
   ],
   entryComponents: [
     ModalComponent

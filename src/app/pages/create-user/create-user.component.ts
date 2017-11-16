@@ -17,7 +17,7 @@ export class CreateUserComponent implements OnInit {
   constructor(private _createUserService: CreateUserService, public formBuilder: FormBuilder) {
     // this.headers = new Headers();
     // this.headers.append('Content-Type', 'application/json');
-    // this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
+    // this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
     // this.data = new RequestOptions({ headers: this.headers });
     // localStorage.setItem("header", JSON.stringify(this.data));
 

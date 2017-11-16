@@ -10,13 +10,23 @@
 
 <div  class="header_nav" size="small">
 <div class="col-xxxl-6 col-xxl-12 col-md-6 title_nav">
-    <ul class="nav navbar-nav navbar-right-header">
+
+  <ul class="nav navbar-nav navbar-right-header" *ngIf="isLoggedIn" >
         <li>
             <a href="#/pages/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
         <li >
             <a href="#/pages/customers"><i class="fa fa-users"></i>Customers</a>
         </li>
+    <li>
+        <div ngbDropdown >
+          <a  href="JavaScript:Void(0);" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-book" ></i>Orders</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a href="#/pages/create-order"><button class="dropdown-item">Add Orders</button></a>
+            <a href="#/pages/order"><button class="dropdown-item">View Orders</button> </a>
+          </div>
+        </div>
+    </li>
         <li >
             <a href="#/pages/suppliers"><i class="fa fa-user-o"></i>Suppliers</a>
         </li>
@@ -24,7 +34,7 @@
             <a href="#/pages/account-edit"><i class="fa fa-vcard"></i>My Account</a>
         </li>
         <li >
-            <a href="#"><i class="fa fa-sign-out"></i>Logout</a>
+            <a href="#/pages/login" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
         </li>
     </ul>
 </div>

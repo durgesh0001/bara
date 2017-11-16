@@ -17,11 +17,11 @@ export class CreateOperatorComponent implements OnInit {
   constructor(private _createOperatorService: CreateOperatorService, public formBuilder: FormBuilder) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.data = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.data = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.data));
     console.log('Create operator component works');
-    
+
     this.CreateOperatorForm = formBuilder.group({
       UserID: ['', Validators.compose([])],
       Name: ['', Validators.compose([])],
@@ -40,7 +40,7 @@ export class CreateOperatorComponent implements OnInit {
       DefaultCurrencySymbol: ['', Validators.compose([])],
       Notes: ['', Validators.compose([])],
     });
-  } 
+  }
 
   createOperator() {
     this._createOperatorService.operatorCreate(this.operatorData).then((operatorDetail) => {

@@ -18,11 +18,11 @@ export class CreateCustomerComponent implements OnInit {
   constructor(private _createCustomerService: CreateCustomerService, public formBuilder: FormBuilder) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.data = new RequestOptions({ headers: this.headers });    
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.data = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.data));
     console.log('Create customer component works');
-    
+
     this.CreateCustomerForm = formBuilder.group({
       Name: ['', Validators.compose([])],
       Status: ['', Validators.compose([])],
@@ -51,7 +51,7 @@ export class CreateCustomerComponent implements OnInit {
       InvoiceFooterHtml: ['', Validators.compose([])],
       InvoiceNumberPrefix: ['', Validators.compose([])],
     });
-  } 
+  }
 
   createCustomer() {
     this._createCustomerService.customerCreate(this.customerData).then((customerDetail) => {

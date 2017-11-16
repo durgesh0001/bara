@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   constructor(private listAccount: ProductListService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
     this.options = new RequestOptions({ headers: this.headers });
     localStorage.setItem("header", JSON.stringify(this.options));
   }

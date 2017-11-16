@@ -13,18 +13,18 @@ export class ProjectsComponent implements OnInit {
   projectDetails: any;
   headers: any;
   options: any;
-  
-  constructor(private listAccount:ProjectsListService) {   
+
+  constructor(private listAccount:ProjectsListService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Basic amFuZUBiYXJhLm5sOndlbGtvbTEyMw==');
-    this.options = new RequestOptions({ headers: this.headers });    
-    localStorage.setItem("header", JSON.stringify(this.options));     
+    this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
+    this.options = new RequestOptions({ headers: this.headers });
+    localStorage.setItem("header", JSON.stringify(this.options));
   }
 
 
   ngOnInit(): void  {
-    this.getProjectsDetails(); 
+    this.getProjectsDetails();
   }
 
   getProjectsDetails(){
