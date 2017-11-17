@@ -9,9 +9,20 @@ export class VatCodeService {
     console.log('Vat code list service works')
    }
 
-   vatData =[];  
+   vatData =[];
    check:any;
-    
+
+
+getVatDetailsById(id,options) {
+  return this.http.get('http://www.baraproject.nl/api/VatCodes/'+id, options)
+    .map(res => {
+      this.check = res;
+      if(this.check._body !== "0"){
+        return res.json()
+      }
+    });
+}
+
    getVatDetails(options) {
      return this.http.get('http://www.baraproject.nl/api/vatcodes', options)
      .map(res => {

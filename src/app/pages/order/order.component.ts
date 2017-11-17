@@ -15,6 +15,7 @@ export class OrderComponent implements OnInit {
   orderDetails: any;
   headers: any;
   options: any;
+  filterQuery:any;
 
   constructor(private router:Router,private listAccount: OrderListService) {
     this.headers = new Headers();

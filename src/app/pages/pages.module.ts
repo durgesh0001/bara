@@ -38,6 +38,8 @@ import {LoginComponent} from "./login/login.component";
 import { ModalComponent } from './ui-features/modals/modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import {DataFilterPipe} from "./data.order.filter";
+
 
 
 
@@ -90,7 +92,8 @@ const PAGES_COMPONENTS = [
     CreateOrderComponent,
     InvoicesComponent,
     CreateInvoiceComponent,
-    LoginComponent
+    LoginComponent,
+    DataFilterPipe
   ],
   entryComponents: [
     ModalComponent

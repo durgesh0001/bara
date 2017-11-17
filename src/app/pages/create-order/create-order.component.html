@@ -15,7 +15,7 @@
             <label>Cost post</label>
           </div>
           <div class="col-sm-6">
-            <p>Cost | Overheads</p>
+            <p>{{orderData.Type}}</p>
           </div>
         </div>
         <div class="row form-group">
@@ -48,11 +48,11 @@
           </div>
           <div class="col-sm-4">
             <p>
-              {{totalExcludingVatAmount}}
             </p>
           </div>
           <div class="col-sm-4">
-            <p> 0.00</p>
+            <p>  {{totalExcludingVatAmount | number : '1.2-2'}}
+            </p>
           </div>
         </div>
         <div class="row form-group">
@@ -64,7 +64,7 @@
           </div>
           <div class="col-sm-4">
             <p>
-              {{totalVatAmount}}</p>
+              {{totalVatAmount | number : '1.2-2'}}</p>
           </div>
         </div>
         <div class="row form-group">
@@ -76,35 +76,35 @@
           </div>
           <div class="col-sm-4">
             <u>
-              {{totalIncludingVatAmount}}
+              {{totalIncludingVatAmount | number : '1.2-2'}}
               </u>
           </div>
         </div>
-            <div class="row form-group">
-              <div class="col-sm-4">
-                <select   disabled  class="form-control"  >
-                <option selected>
-                  In Books
-                </option>
-                </select>
-              </div>
-              <div class="col-sm-4">
+            <!--<div class="row form-group">-->
+              <!--<div class="col-sm-4">-->
+                <!--<select   disabled  class="form-control"  >-->
+                <!--<option selected>-->
+                  <!--In Books-->
+                <!--</option>-->
+                <!--</select>-->
+              <!--</div>-->
+              <!--<div class="col-sm-4">-->
 
-              </div>
-              <div class="col-sm-4">
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-sm-4">
-              <label>To Be Booked</label>
-              </div>
-              <div class="col-sm-4">
+              <!--</div>-->
+              <!--<div class="col-sm-4">-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row form-group">-->
+              <!--<div class="col-sm-4">-->
+              <!--<label>To Be Booked</label>-->
+              <!--</div>-->
+              <!--<div class="col-sm-4">-->
 
-              </div>
-              <div class="col-sm-4">
-                <p>$0.00</p>
-              </div>
-            </div>
+              <!--</div>-->
+              <!--<div class="col-sm-4">-->
+                <!--<p>$0.00</p>-->
+              <!--</div>-->
+            <!--</div>-->
           </nb-card-body>
         </nb-card>
       </div>
@@ -180,7 +180,7 @@
               <label>Status</label>
               <select  class="form-control" name="Status" id="Status" tabindex="9" formControlName="Status" [(ngModel)]="orderData.Status" >
                 <option  value="" >Select Status</option>
-                <option  value="Draft" >Draft</option>
+                <option  value="Draft"  >Draft</option>
                 <option  value="Quotation">Quotation</option>
                 <option  value="Final">Final</option>
                 <option  value="Invoiced">Invoiced</option>
@@ -210,7 +210,7 @@
               <p style="color:red"  *ngIf="!CreateOrderForm.controls.Description2.valid  && CreateOrderForm.controls.Description2.dirty" class="danger">*Required.</p>
             </div>
           </div>
-          <div class="row form-group">
+          <div class="row form-group" *ngIf="!orderId">
             <div class="col-sm-6">
               <label>Supply</label>
               <select  class="form-control" name="OrderItemSupplyID" id="OrderItemSupplyID"  tabindex="13" formControlName="OrderItemSupplyID" [(ngModel)]="orderData.OrderItemSupplyID" >
@@ -227,7 +227,7 @@
               </select>
             </div>
           </div>
-          <div class="row form-group">
+          <div class="row form-group"  *ngIf="!orderId">
             <div class="col-sm-6">
               <label>Order Quantitiy</label>
               <input type="number" placeholder="Order Quantity" class="form-control" name="OrderItemQuantity" tabindex="15" id="OrderItemQuantity"  formControlName="OrderItemQuantity" [(ngModel)]="orderData.OrderItemQuantity" required />
@@ -240,10 +240,10 @@
               <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemReference.valid  && CreateOrderForm.controls.OrderItemReference.dirty" class="danger">*Required.</p>
             </div>
           </div>
-          <div class="row form-group">
+          <div class="row form-group"  *ngIf="!orderId">
             <div class="col-sm-6">
               <label>Price</label>
-              <input type="number" placeholder="Order Price" class="form-control" name="OrderItemPrice" tabindex="17" id="OrderItemPrice"  formControlName="OrderItemPrice" [(ngModel)]="orderData.OrderItemPrice" required />
+              <input type="number" placeholder="Order Price" class="form-control" name="OrderItemPrice" (ngModelChange)="onChangeVat()" tabindex="17" id="OrderItemPrice"  formControlName="OrderItemPrice" [(ngModel)]="orderData.OrderItemPrice" required />
               <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemPrice.valid  && CreateOrderForm.controls.OrderItemPrice.dirty" class="danger">*Required.</p>
 
             </div>
@@ -253,7 +253,7 @@
               <p style="color:red"  *ngIf="!CreateOrderForm.controls.OrderItemAllowancePercent.valid  && CreateOrderForm.controls.OrderItemAllowancePercent.dirty" class="danger">*Required.</p>
             </div>
           </div>
-          <div class="row form-group">
+          <div class="row form-group"  *ngIf="!orderId">
             <div class="col-sm-6">
               <label>AllowanceFixed</label>
               <input type="number" placeholder="Order Allow Fixed" class="form-control" name="OrderItemAllowanceFixed" id="OrderItemAllowanceFixed"  formControlName="OrderItemAllowanceFixed" [(ngModel)]="orderData.OrderItemAllowanceFixed" required />
@@ -262,13 +262,13 @@
             </div>
             <div class="col-sm-6">
               <label>VatCode</label>
-              <select  class="form-control"  class="form-control" name="OrderItemVatCodeID" id="OrderItemVatCodeID"  formControlName="OrderItemVatCodeID" tabindex="19" [(ngModel)]="orderData.OrderItemVatCodeID">
+              <select  class="form-control"  (change)="onChangeVat()" class="form-control" name="OrderItemVatCodeID" id="OrderItemVatCodeID"  formControlName="OrderItemVatCodeID" tabindex="19" [(ngModel)]="orderData.OrderItemVatCodeID">
                 <option  value="" >Select VatCode</option>
                 <option *ngFor="let vatCode of vatCodesDetails" [ngValue]="vatCode.VatCodeID">{{vatCode.Name}}</option>
               </select>
             </div>
           </div>
-          <div class="row form-group">
+          <div class="row form-group"  *ngIf="!orderId">
             <div class="col-sm-12">
               <label>Order Description</label>
               <textarea  placeholder="Order Description" class="form-control" name="OrderItemDescription" id="OrderItemDescription" tabindex="20" formControlName="OrderItemDescription" [(ngModel)]="orderData.OrderItemDescription"  >
@@ -287,4 +287,4 @@
       </div>
     </div>
     </nb-card-body>
-    </nb-card>F
+    </nb-card>

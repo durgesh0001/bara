@@ -38,7 +38,7 @@ export class CreateOrderComponent implements OnInit {
   orderId:any;
   ButtonLabel:any;
   orderDataTemp:any;
-  orderData = { CustomerID: '', SupplierID: '', ProjectID: '', QuotationID: '', Number: '', Revision: '', Type: '', Status: '', Description1: '', Description2: '', Reference: '', Date: new Date(), Notes: '', OrderItemSupplyID: '', OrderItemProjectID: '', OrderItemDescription: '', OrderItemReference: '', OrderItemQuantity: '', OrderItemPrice: '', OrderItemAllowancePercent: '', OrderItemAllowanceFixed: '', OrderItemVatCodeID: '' };
+  orderData = { ClientID:'',CustomerID: '', SupplierID: '', ProjectID: '', QuotationID: '', Number: '', Revision: '', Type: '', Status: 'Draft', Description1: '', Description2: '', Reference: '', Date: new Date(), Notes: '', OrderItemSupplyID: '', OrderItemProjectID: '', OrderItemDescription: '', OrderItemReference: '', OrderItemQuantity: '', OrderItemPrice: '', OrderItemAllowancePercent: '', OrderItemAllowanceFixed: '', OrderItemVatCodeID: '' };
   optionsDate: DatepickerOptions = {
     minYear: 1970,
     maxYear: 2030,
@@ -56,7 +56,7 @@ export class CreateOrderComponent implements OnInit {
     this.headers.append('Authorization', 'Basic '+localStorage.getItem('token'));
     this.options = new RequestOptions({ headers: this.headers });
     this.data = new RequestOptions({ headers: this.headers });
-    this.totalExcludingVatAmount = 0;
+    this.totalExcludingVatAmount = 0.00;
     this.totalIncludingVatAmount = 0;
     this.totalVatAmount = 0;
     localStorage.setItem("header", JSON.stringify(this.data));
@@ -188,6 +188,47 @@ export class CreateOrderComponent implements OnInit {
       this.projectDetails = projectDetailsData;
     });
   }
+
+  onChangeVat()
+  {
+    if(this.orderData.OrderItemPrice)
+    {
+      if(this.orderData.OrderItemVatCodeID)
+      {
+        let id = this.orderData.OrderItemVatCodeID;
+        return this._vatCodeSerive.getVatDetailsById(id,this.options).subscribe((vatCodesData) =>{
+          if(vatCodesData.VatPercents.length > 0)
+          {
+            let rate = parseFloat(this.orderData.OrderItemPrice);
+            let perSentage = vatCodesData.VatPercents[0].Value;
+            let vat = perSentage/100 * rate;
+            this.totalExcludingVatAmount = rate.toFixed(2);
+            this.totalVatAmount = vat;
+            this.totalIncludingVatAmount = rate + vat;
+          }
+          else
+          {
+            this.totalExcludingVatAmount = parseFloat(this.orderData.OrderItemPrice).toFixed(2);
+            this.totalIncludingVatAmount = this.totalExcludingVatAmount;
+            this.totalVatAmount = 0;
+          }
+        });
+      }
+      else
+      {
+        this.totalExcludingVatAmount = parseFloat(this.orderData.OrderItemPrice).toFixed(2);;
+        this.totalIncludingVatAmount = this.totalExcludingVatAmount;
+        this.totalVatAmount = 0;
+      }
+    }
+    else
+    {
+      this.totalExcludingVatAmount = 0.00;
+      this.totalIncludingVatAmount = 0;
+      this.totalVatAmount = 0;
+    }
+  }
+
   getOrderDetailById(id)
   {
     if(id)
@@ -232,6 +273,10 @@ export class CreateOrderComponent implements OnInit {
           //this.orderData.OrderItemAllowancePercent = this.orderDataTemp.OrderItems[0].Price;
           this.orderData.OrderItemVatCodeID = this.orderDataTemp.OrderItems[0].VatCode.VatCodeID;
           this.orderData.OrderItemDescription = this.orderDataTemp.OrderItems[0].Description;
+          if(this.orderDataTemp.Client)
+          {
+            this.orderData.ClientID = this.orderDataTemp.Client.ClientID
+          }
 
 
         }

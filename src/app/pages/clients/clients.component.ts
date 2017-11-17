@@ -13,7 +13,7 @@ export class ClientsComponent implements OnInit {
 
   clientDetails: any;
   headers: any;
-  options: any
+  options: any;
 
   constructor(private operatorAccount:ClientListService) {
     this.headers = new Headers();
@@ -23,7 +23,6 @@ export class ClientsComponent implements OnInit {
     localStorage.setItem("header", JSON.stringify(this.options));
 
     this.operatorAccount.getClientDetails(this.options).subscribe((clientData) =>{
-      //console.log(clientData);
       this.clientDetails = clientData;
     });
   }

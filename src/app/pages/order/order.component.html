@@ -1,8 +1,19 @@
 <nb-card>
   <nb-card-header>Orders</nb-card-header>
   <nb-card-body>
+    <div class="row form-group">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+        <input class="form-control" [(ngModel)]="filterQuery" placeholder="Search"/>
+      </div>
+    </div>
       <div class="table-responsive">
-      <table class="table table-striped" [mfData]="orderDetails" #mf="mfDataTable" [mfRowsOnPage]="10">
+      <table class="table table-striped" [mfData]="orderDetails| dataFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="10">
           <thead>
             <tr>
               <th style="width: 19%">
